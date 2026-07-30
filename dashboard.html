@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard — Stackly Crypto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dash-body" data-role="user">
+<div class="sidebar-overlay"></div>
+<div class="dash-layout">
+
+  <!-- Sidebar — every item opens its own data view -->
+  <aside class="sidebar">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" fill="none"><defs><linearGradient id="lgA" x1="0" y1="0" x2="48" y2="48"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#a855f7"/></linearGradient><linearGradient id="lgB" x1="48" y1="0" x2="0" y2="48"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#4f46e5"/></linearGradient></defs><path d="M24 2 42 12.5v23L24 46 6 35.5v-23L24 2Z" fill="url(#lgA)"/><path d="M15 18.5h13.5a4.7 4.7 0 0 1 0 9.4H19a4.7 4.7 0 0 0 0 9.4H33" stroke="#fff" stroke-width="4.4" stroke-linecap="round" fill="none"/><path d="M24 2 42 12.5 24 23 6 12.5 24 2Z" fill="url(#lgB)" opacity=".85"/></svg>
+      <span class="logo-text"><b>STACKLY</b><span style="font-size:10px;letter-spacing:3px;color:#8b5cf6;font-weight:700">USER PANEL</span></span>
+    </a>
+    <div class="side-label">Main Menu</div>
+    <a class="side-link active" data-view="overview" data-title="Welcome back" data-sub="Here's your portfolio overview for today."><i class="fa-solid fa-house"></i> Dashboard</a>
+    <a class="side-link" data-view="wallet" data-title="My Wallet" data-sub="Your wallets, balances and addresses."><i class="fa-solid fa-wallet"></i> My Wallet</a>
+    <a class="side-link" data-view="trade" data-title="Buy / Sell" data-sub="Convert crypto instantly at the best rates."><i class="fa-solid fa-arrow-right-arrow-left"></i> Buy / Sell</a>
+    <a class="side-link" data-view="staking" data-title="Staking" data-sub="Earn passive income on your assets."><i class="fa-solid fa-layer-group"></i> Staking</a>
+    <a class="side-link" data-view="transactions" data-title="Transactions" data-sub="Your complete activity history."><i class="fa-solid fa-clock-rotate-left"></i> Transactions</a>
+    <div class="side-label">Account</div>
+    <a class="side-link" data-view="profile" data-title="Profile" data-sub="Manage your personal information."><i class="fa-solid fa-user-gear"></i> Profile</a>
+    <a class="side-link" data-view="security" data-title="Security" data-sub="Keep your account protected."><i class="fa-solid fa-shield-halved"></i> Security</a>
+    <a class="side-link" data-view="support" data-title="Support" data-sub="Get help from our 24/7 team."><i class="fa-solid fa-headset"></i> Support</a>
+    <div class="side-logout"><a href="#" class="side-link" data-logout><i class="fa-solid fa-right-from-bracket"></i> Log Out</a></div>
+  </aside>
+
+  <!-- Main -->
+  <main class="dash-main">
+    <div class="dash-topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="icon-btn menu-toggle-dash"><i class="fa-solid fa-bars"></i></button>
+        <div><h1 id="dashTitle">Welcome back</h1><p id="dashSub">Here's your portfolio overview for today.</p></div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search"><i class="fa-solid fa-magnifying-glass" style="color:var(--muted)"></i><input placeholder="Search assets…"></div>
+        <a href="404.html" class="icon-btn"><i class="fa-solid fa-bell"></i><span class="dot"></span></a>
+        <a href="404.html" class="avatar">S</a>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: OVERVIEW ============ -->
+    <div class="dash-view active" id="view-overview">
+      <div class="dash-cards">
+        <div class="dash-card"><span class="dc-icon si-blue"><i class="fa-solid fa-vault"></i></span>
+          <small>Portfolio Balance</small><b>$84,392.50</b><span class="dc-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12.4% this month</span></div>
+        <div class="dash-card"><span class="dc-icon si-mint"><i class="fa-solid fa-arrow-trend-up"></i></span>
+          <small>Today's P&amp;L</small><b>+$1,284.20</b><span class="dc-trend up"><i class="fa-solid fa-arrow-trend-up"></i> +1.54% today</span></div>
+        <div class="dash-card"><span class="dc-icon si-violet"><i class="fa-solid fa-layer-group"></i></span>
+          <small>Staking Rewards</small><b>$342.18</b><span class="dc-trend up"><i class="fa-solid fa-arrow-trend-up"></i> 8.2% avg APY</span></div>
+        <div class="dash-card"><span class="dc-icon si-gold"><i class="fa-solid fa-coins"></i></span>
+          <small>Assets Held</small><b>7 Coins</b><span class="dc-trend down"><i class="fa-solid fa-arrow-trend-down"></i> 2 near stop-loss</span></div>
+      </div>
+
+      <div class="dash-panels">
+        <div class="panel">
+          <div class="panel-head"><h3>Portfolio Performance</h3>
+            <div class="chart-tabs"><button class="active" data-range="1W">1W</button><button data-range="1M">1M</button><button data-range="1Y">1Y</button></div>
+          </div>
+          <div class="chart-wrap"><canvas id="lineChart"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Asset Allocation</h3></div>
+          <div class="donut-wrap"><canvas id="donutChart"></canvas>
+            <div class="donut-center"><b>$84.4K</b><small>Total Value</small></div></div>
+          <div class="donut-legend">
+            <div class="dl-item"><span class="swatch" style="background:#4f46e5"></span> Bitcoin <b>42%</b></div>
+            <div class="dl-item"><span class="swatch" style="background:#8b5cf6"></span> Ethereum <b>26%</b></div>
+            <div class="dl-item"><span class="swatch" style="background:#12d6a0"></span> Solana <b>18%</b></div>
+            <div class="dl-item"><span class="swatch" style="background:#f7b955"></span> Others <b>14%</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>My Holdings</h3></div>
+        <div style="overflow-x:auto">
+        <table class="dash-table">
+          <thead><tr><th>Asset</th><th>Price</th><th>24h</th><th>Holdings</th><th>Value</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-btc"><i class="fa-brands fa-bitcoin"></i></span><div><b>Bitcoin</b><small>BTC</small></div></div></td>
+              <td>$63,245.20</td><td><span class="badge badge-green">+2.41%</span></td><td>0.5620 BTC</td><td><b>$35,541.80</b></td>
+              <td><button class="tbl-btn" data-toast="Opening BTC trade…">Trade</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-eth"><i class="fa-brands fa-ethereum"></i></span><div><b>Ethereum</b><small>ETH</small></div></div></td>
+              <td>$3,245.80</td><td><span class="badge badge-green">+1.86%</span></td><td>6.7500 ETH</td><td><b>$21,909.15</b></td>
+              <td><button class="tbl-btn" data-toast="Opening ETH trade…">Trade</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-sol"><i class="fa-solid fa-bolt"></i></span><div><b>Solana</b><small>SOL</small></div></div></td>
+              <td>$142.35</td><td><span class="badge badge-green">+4.32%</span></td><td>106.40 SOL</td><td><b>$15,146.04</b></td>
+              <td><button class="tbl-btn" data-toast="Opening SOL trade…">Trade</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-bnb"><i class="fa-solid fa-coins"></i></span><div><b>BNB</b><small>BNB</small></div></div></td>
+              <td>$598.21</td><td><span class="badge badge-green">+1.67%</span></td><td>12.00 BNB</td><td><b>$7,178.52</b></td>
+              <td><button class="tbl-btn" data-toast="Opening BNB trade…">Trade</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-ada"><i class="fa-solid fa-cube"></i></span><div><b>Cardano</b><small>ADA</small></div></div></td>
+              <td>$0.45</td><td><span class="badge badge-red">-0.84%</span></td><td>10,250 ADA</td><td><b>$4,612.50</b></td>
+              <td><button class="tbl-btn" data-toast="Opening ADA trade…">Trade</button></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: WALLET ============ -->
+    <div class="dash-view" id="view-wallet">
+      <div class="dash-cards cols-3">
+        <div class="dash-card"><span class="dc-icon coin-btc" style="color:#fff"><i class="fa-brands fa-bitcoin"></i></span>
+          <small>Bitcoin Wallet</small><b>0.5620 BTC</b><span class="dc-trend up">≈ $35,541.80</span>
+          <div style="margin-top:14px;display:flex;gap:10px"><button class="tbl-btn" data-toast="BTC deposit address copied!">Deposit</button><button class="tbl-btn" data-toast="BTC withdrawal started…">Withdraw</button></div></div>
+        <div class="dash-card"><span class="dc-icon coin-eth" style="color:#fff"><i class="fa-brands fa-ethereum"></i></span>
+          <small>Ethereum Wallet</small><b>6.7500 ETH</b><span class="dc-trend up">≈ $21,909.15</span>
+          <div style="margin-top:14px;display:flex;gap:10px"><button class="tbl-btn" data-toast="ETH deposit address copied!">Deposit</button><button class="tbl-btn" data-toast="ETH withdrawal started…">Withdraw</button></div></div>
+        <div class="dash-card"><span class="dc-icon si-mint"><i class="fa-solid fa-dollar-sign"></i></span>
+          <small>USDT Wallet</small><b>12,480 USDT</b><span class="dc-trend up">≈ $12,480.00</span>
+          <div style="margin-top:14px;display:flex;gap:10px"><button class="tbl-btn" data-toast="USDT deposit address copied!">Deposit</button><button class="tbl-btn" data-toast="USDT withdrawal started…">Withdraw</button></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Wallet Addresses</h3></div>
+        <div style="overflow-x:auto">
+        <table class="dash-table">
+          <thead><tr><th>Network</th><th>Address</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-btc"><i class="fa-brands fa-bitcoin"></i></span><b>Bitcoin (BTC)</b></div></td>
+              <td style="font-family:monospace;font-size:12.5px">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</td>
+              <td><span class="badge badge-green">Active</span></td><td><button class="tbl-btn" data-toast="Address copied to clipboard!">Copy</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-eth"><i class="fa-brands fa-ethereum"></i></span><b>Ethereum (ERC-20)</b></div></td>
+              <td style="font-family:monospace;font-size:12.5px">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</td>
+              <td><span class="badge badge-green">Active</span></td><td><button class="tbl-btn" data-toast="Address copied to clipboard!">Copy</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-sol"><i class="fa-solid fa-bolt"></i></span><b>Solana (SOL)</b></div></td>
+              <td style="font-family:monospace;font-size:12.5px">7EcDhSYGxXyscszYEp35gHN5AXH8c8rTPWtMkEwrW6M2</td>
+              <td><span class="badge badge-green">Active</span></td><td><button class="tbl-btn" data-toast="Address copied to clipboard!">Copy</button></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: BUY / SELL ============ -->
+    <div class="dash-view" id="view-trade">
+      <div class="dash-panels" style="grid-template-columns:1fr 1fr">
+        <div class="panel">
+          <div class="panel-head"><h3><i class="fa-solid fa-circle-arrow-down" style="color:var(--mint);margin-right:8px"></i>Buy Crypto</h3></div>
+          <form class="dash-form" data-msg="Buy order placed successfully!">
+            <div class="form-group"><label>You Pay (USD)</label><input type="number" value="1000" min="10"></div>
+            <div class="form-group"><label>You Receive</label>
+              <select><option>Bitcoin (BTC)</option><option>Ethereum (ETH)</option><option>Solana (SOL)</option><option>BNB</option></select></div>
+            <div class="convert-preview"><span>Estimated</span><b>≈ 0.0158 BTC</b></div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px">Buy Now <i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3><i class="fa-solid fa-circle-arrow-up" style="color:var(--red);margin-right:8px"></i>Sell Crypto</h3></div>
+          <form class="dash-form" data-msg="Sell order placed successfully!">
+            <div class="form-group"><label>You Sell</label>
+              <select><option>Bitcoin (BTC) — 0.5620</option><option>Ethereum (ETH) — 6.7500</option><option>Solana (SOL) — 106.40</option><option>BNB — 12.00</option></select></div>
+            <div class="form-group"><label>Amount</label><input type="number" value="0.1" step="0.0001" min="0"></div>
+            <div class="convert-preview"><span>Estimated</span><b>≈ $6,324.52</b></div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px">Sell Now <i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Recent Conversions</h3></div>
+        <div style="overflow-x:auto">
+        <table class="dash-table">
+          <thead><tr><th>Type</th><th>From</th><th>To</th><th>Rate</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-green">BUY</span></td><td>$2,000.00</td><td>0.0316 BTC</td><td>$63,210/BTC</td><td>Jul 29, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><span class="badge badge-red">SELL</span></td><td>0.5000 ETH</td><td>$1,622.90</td><td>$3,245/ETH</td><td>Jul 27, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><span class="badge badge-green">BUY</span></td><td>$500.00</td><td>3.512 SOL</td><td>$142.35/SOL</td><td>Jul 25, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><span class="badge badge-green">BUY</span></td><td>$1,200.00</td><td>2.005 BNB</td><td>$598.21/BNB</td><td>Jul 21, 2026</td><td><span class="badge badge-gold">Refunded</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: STAKING ============ -->
+    <div class="dash-view" id="view-staking">
+      <div class="dash-cards cols-3">
+        <div class="dash-card"><span class="dc-icon coin-eth" style="color:#fff"><i class="fa-brands fa-ethereum"></i></span>
+          <small>Ethereum 2.0</small><b>8.2% APY</b><span class="dc-trend up">Flexible — unstake anytime</span>
+          <div style="margin-top:14px"><button class="tbl-btn" data-toast="ETH staking started!">Stake ETH</button></div></div>
+        <div class="dash-card"><span class="dc-icon coin-sol" style="color:#fff"><i class="fa-solid fa-bolt"></i></span>
+          <small>Solana</small><b>11.4% APY</b><span class="dc-trend up">30-day lock bonus</span>
+          <div style="margin-top:14px"><button class="tbl-btn" data-toast="SOL staking started!">Stake SOL</button></div></div>
+        <div class="dash-card"><span class="dc-icon coin-ada" style="color:#fff"><i class="fa-solid fa-cube"></i></span>
+          <small>Cardano</small><b>5.1% APY</b><span class="dc-trend up">Flexible — daily payouts</span>
+          <div style="margin-top:14px"><button class="tbl-btn" data-toast="ADA staking started!">Stake ADA</button></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Active Stakes</h3></div>
+        <div style="overflow-x:auto">
+        <table class="dash-table">
+          <thead><tr><th>Asset</th><th>Staked</th><th>APY</th><th>Earned</th><th>Term</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-eth"><i class="fa-brands fa-ethereum"></i></span><b>Ethereum</b></div></td>
+              <td>2.5000 ETH</td><td>8.2%</td><td style="color:var(--mint);font-weight:600">+0.0421 ETH</td><td>Flexible</td>
+              <td><button class="tbl-btn" data-toast="Unstake request submitted">Unstake</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-sol"><i class="fa-solid fa-bolt"></i></span><b>Solana</b></div></td>
+              <td>40.00 SOL</td><td>11.4%</td><td style="color:var(--mint);font-weight:600">+1.2260 SOL</td><td>30 days left</td>
+              <td><button class="tbl-btn" data-toast="Available after lock period">Locked</button></td></tr>
+            <tr><td><div class="t-coin"><span class="coin-logo coin-ada"><i class="fa-solid fa-cube"></i></span><b>Cardano</b></div></td>
+              <td>5,000 ADA</td><td>5.1%</td><td style="color:var(--mint);font-weight:600">+62.4 ADA</td><td>Flexible</td>
+              <td><button class="tbl-btn" data-toast="Unstake request submitted">Unstake</button></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: TRANSACTIONS ============ -->
+    <div class="dash-view" id="view-transactions">
+      <div class="panel">
+        <div class="panel-head"><h3>All Transactions</h3>
+          <div class="chart-tabs"><button class="active" data-toast="Filter: All">All</button><button data-toast="Filter: Buys">Buys</button><button data-toast="Filter: Sells">Sells</button><button data-toast="Filter: Transfers">Transfers</button></div>
+        </div>
+        <div style="overflow-x:auto">
+        <table class="dash-table">
+          <thead><tr><th>ID</th><th>Type</th><th>Asset</th><th>Amount</th><th>Value</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><b>#TX-88214</b></td><td><span class="badge badge-green">BUY</span></td><td>BTC</td><td>0.0316</td><td>$2,000.00</td><td>Jul 29, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><b>#TX-88198</b></td><td><span class="badge badge-blue">RECEIVE</span></td><td>USDT</td><td>2,480</td><td>$2,480.00</td><td>Jul 28, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><b>#TX-88170</b></td><td><span class="badge badge-red">SELL</span></td><td>ETH</td><td>0.5000</td><td>$1,622.90</td><td>Jul 27, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><b>#TX-88145</b></td><td><span class="badge badge-gold">STAKE</span></td><td>SOL</td><td>40.00</td><td>$5,694.00</td><td>Jul 26, 2026</td><td><span class="badge badge-blue">Active</span></td></tr>
+            <tr><td><b>#TX-88120</b></td><td><span class="badge badge-green">BUY</span></td><td>SOL</td><td>3.512</td><td>$500.00</td><td>Jul 25, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><b>#TX-88099</b></td><td><span class="badge badge-blue">SEND</span></td><td>BTC</td><td>0.0100</td><td>$632.45</td><td>Jul 23, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+            <tr><td><b>#TX-88064</b></td><td><span class="badge badge-green">BUY</span></td><td>BNB</td><td>2.005</td><td>$1,200.00</td><td>Jul 21, 2026</td><td><span class="badge badge-gold">Refunded</span></td></tr>
+            <tr><td><b>#TX-88031</b></td><td><span class="badge badge-gold">REWARD</span></td><td>ETH</td><td>0.0421</td><td>$136.70</td><td>Jul 20, 2026</td><td><span class="badge badge-green">Completed</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: PROFILE ============ -->
+    <div class="dash-view" id="view-profile">
+      <div class="dash-panels" style="grid-template-columns:1fr 1.6fr">
+        <div class="panel" style="text-align:center">
+          <span class="avatar" style="width:90px;height:90px;font-size:34px;border-radius:24px;margin:10px auto 18px;display:grid">D</span>
+          <h3 id="profileName">demo</h3>
+          <p style="color:var(--muted);font-size:13.5px;margin-bottom:18px">Trader plan — Member since 2024</p>
+          <span class="badge badge-green" style="margin-bottom:18px"><i class="fa-solid fa-circle-check"></i> KYC Verified</span>
+          <div style="display:grid;gap:10px;margin-top:18px;text-align:left">
+            <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--muted)">Account Level</span><b>Pro</b></div>
+            <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--muted)">Trading Fee</span><b>0.10%</b></div>
+            <div style="display:flex;justify-content:space-between;font-size:13.5px"><span style="color:var(--muted)">Referrals</span><b>14 friends</b></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Edit Profile</h3></div>
+          <form class="dash-form" data-msg="Profile updated successfully!">
+            <div class="form-row">
+              <div class="form-group"><label>Full Name</label><input type="text" value="Demo Trader"></div>
+              <div class="form-group"><label>Username</label><input type="text" value="demo"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Email</label><input type="email" value="demo@stackly.com"></div>
+              <div class="form-group"><label>Phone</label><input type="tel" value="+65 9123 4567"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Country</label><select><option>Singapore</option><option>United Kingdom</option><option>United States</option><option>India</option></select></div>
+              <div class="form-group"><label>Timezone</label><select><option>GMT+8 (Singapore)</option><option>GMT+0 (London)</option><option>GMT-5 (New York)</option></select></div>
+            </div>
+            <button class="btn btn-primary">Save Changes <i class="fa-solid fa-check"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: SECURITY ============ -->
+    <div class="dash-view" id="view-security">
+      <div class="dash-cards cols-3">
+        <div class="dash-card"><span class="dc-icon si-mint"><i class="fa-solid fa-mobile-screen"></i></span>
+          <small>Two-Factor Auth</small><b>Enabled</b><span class="dc-trend up">Authenticator app</span>
+          <div style="margin-top:14px"><button class="tbl-btn" data-toast="2FA settings opened">Manage</button></div></div>
+        <div class="dash-card"><span class="dc-icon si-blue"><i class="fa-solid fa-key"></i></span>
+          <small>Hardware Key</small><b>1 Connected</b><span class="dc-trend up">YubiKey 5C</span>
+          <div style="margin-top:14px"><button class="tbl-btn" data-toast="Add new hardware key">Add Key</button></div></div>
+        <div class="dash-card"><span class="dc-icon si-gold"><i class="fa-solid fa-envelope-circle-check"></i></span>
+          <small>Anti-Phishing Code</small><b>SATURN-42</b><span class="dc-trend up">Shown in all emails</span>
+          <div style="margin-top:14px"><button class="tbl-btn" data-toast="Anti-phishing code updated">Change</button></div></div>
+      </div>
+      <div class="dash-panels" style="grid-template-columns:1fr 1.4fr">
+        <div class="panel">
+          <div class="panel-head"><h3>Change Password</h3></div>
+          <form class="dash-form" data-msg="Password changed successfully!">
+            <div class="form-group"><label>Current Password</label><input type="password" placeholder="••••••••"></div>
+            <div class="form-group"><label>New Password</label><input type="password" placeholder="Min. 8 characters"></div>
+            <div class="form-group"><label>Confirm New Password</label><input type="password" placeholder="Repeat new password"></div>
+            <button class="btn btn-primary">Update Password <i class="fa-solid fa-lock"></i></button>
+          </form>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Active Sessions</h3></div>
+          <div style="overflow-x:auto">
+          <table class="dash-table">
+            <thead><tr><th>Device</th><th>Location</th><th>Last Active</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><i class="fa-solid fa-laptop" style="color:var(--blue);margin-right:8px"></i> MacBook Pro — Chrome</td><td>Singapore</td><td>Now</td><td><span class="badge badge-green">Current</span></td></tr>
+              <tr><td><i class="fa-solid fa-mobile-screen" style="color:var(--violet);margin-right:8px"></i> iPhone 15 — Stackly App</td><td>Singapore</td><td>2h ago</td><td><button class="tbl-btn" data-toast="Session revoked">Revoke</button></td></tr>
+              <tr><td><i class="fa-solid fa-desktop" style="color:var(--muted);margin-right:8px"></i> Windows PC — Firefox</td><td>London, UK</td><td>3 days ago</td><td><button class="tbl-btn" data-toast="Session revoked">Revoke</button></td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ VIEW: SUPPORT ============ -->
+    <div class="dash-view" id="view-support">
+      <div class="dash-cards cols-3">
+        <div class="dash-card" style="cursor:pointer" data-toast="Opening live chat…"><span class="dc-icon si-blue"><i class="fa-solid fa-comments"></i></span>
+          <small>Fastest</small><b>Live Chat</b><span class="dc-trend up">Avg. reply under 3 min</span></div>
+        <div class="dash-card" style="cursor:pointer" data-toast="Opening email composer…"><span class="dc-icon si-violet"><i class="fa-solid fa-envelope"></i></span>
+          <small>Detailed issues</small><b>Email Us</b><span class="dc-trend up">Reply within 24h</span></div>
+        <div class="dash-card" style="cursor:pointer" data-toast="Calling support…"><span class="dc-icon si-gold"><i class="fa-solid fa-phone"></i></span>
+          <small>Urgent matters</small><b>Call 24/7</b><span class="dc-trend up">+65 6011 8842</span></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Open a Support Ticket</h3></div>
+        <form class="dash-form" data-msg="Ticket submitted! We'll reply within 24 hours.">
+          <div class="form-row">
+            <div class="form-group"><label>Subject</label><input type="text" placeholder="Brief summary of your issue"></div>
+            <div class="form-group"><label>Category</label>
+              <select><option>Account &amp; Login</option><option>Deposits &amp; Withdrawals</option><option>Trading</option><option>Staking</option><option>Security</option><option>Other</option></select></div>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Describe your issue in detail…"></textarea></div>
+          <button class="btn btn-primary">Submit Ticket <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

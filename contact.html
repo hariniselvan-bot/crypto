@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Stackly Crypto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header id="site-header" data-active="contact"></header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1 data-reveal>Contact <span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">Us</span></h1>
+    <p data-reveal data-delay="100">Questions about buying, selling or your account? Our team replies in under 3 minutes — day or night.</p>
+    <div class="breadcrumb" data-reveal data-delay="200"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Contact</span></div>
+  </div>
+</section>
+
+<!-- Support options -->
+<section style="padding:70px 0 40px">
+  <div class="container about-grid">
+    <div class="about-visual" data-reveal="left">
+      <img src="images/support_11zon.webp" alt="Stackly 24/7 support agent">
+      <div class="float-chip chip-1"><i class="si-mint" style="border-radius:11px;display:grid;place-items:center"><span class="fa-solid fa-clock"></span></i> Avg. reply: under 3 min</div>
+    </div>
+    <div data-reveal="right">
+      <span class="sec-tag">We're Here 24/7</span>
+      <h2 class="sec-title">How can we <span class="grad-text">help you?</span></h2>
+      <p class="sec-sub">Pick the team that fits your question — every channel is staffed by real humans, around the clock.</p>
+      <div class="steps-list">
+        <div class="step-item" data-reveal onclick="location.href='404.html'" style="cursor:pointer"><span class="step-num"><i class="fa-solid fa-headset"></i></span>
+          <div><h3>Customer Support</h3><p>Account, wallet &amp; trading help — live chat, email and phone.</p></div></div>
+        <div class="step-item" data-reveal data-delay="120" onclick="location.href='404.html'" style="cursor:pointer"><span class="step-num"><i class="fa-solid fa-briefcase"></i></span>
+          <div><h3>Business &amp; OTC</h3><p>Institutional accounts, OTC desk and partnership inquiries.</p></div></div>
+        <div class="step-item" data-reveal data-delay="240" onclick="location.href='404.html'" style="cursor:pointer"><span class="step-num"><i class="fa-solid fa-shield-halved"></i></span>
+          <div><h3>Security Team</h3><p>Report suspicious activity or a security concern — priority line.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-sec" style="padding-top:40px">
+  <div class="container contact-grid">
+    <div class="contact-info-cards">
+      <div class="ci-card" data-reveal="left" onclick="location.href='404.html'">
+        <img class="ci-img" src="images/office-sg_11zon.webp" alt="Head office">
+        <div><b>Head Office</b><span>88 Blockchain Avenue, Suite 1200<br>Singapore 048616</span></div>
+      </div>
+      <div class="ci-card" data-reveal="left" data-delay="100" onclick="location.href='404.html'">
+        <img class="ci-img" src="images/ci-email_11zon.webp" alt="Email us">
+        <div><b>Email Us</b><span>support@stacklycrypto.com<br>partners@stacklycrypto.com</span></div>
+      </div>
+      <div class="ci-card" data-reveal="left" data-delay="200" onclick="location.href='404.html'">
+        <img class="ci-img" src="images/ci-call_11zon.webp" alt="Call us">
+        <div><b>Call Us</b><span>+65 6011 8842 (24/7)<br>+1 (888) 555-0192 (US toll-free)</span></div>
+      </div>
+      <div class="ci-card" data-reveal="left" data-delay="300" onclick="location.href='404.html'">
+        <img class="ci-img" src="images/support_11zon.webp" alt="Live chat">
+        <div><b>Live Chat</b><span>Average response: under 3 minutes<br>Available 24/7 in 12 languages</span></div>
+      </div>
+    </div>
+
+    <div class="contact-form-card" data-reveal="right">
+      <h3>Send us a message</h3>
+      <p>Fill out the form and we'll get back to you within one business day.</p>
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cName">Full Name</label>
+            <input type="text" id="cName" placeholder="John Carter">
+            <span class="err-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Email Address</label>
+            <input type="email" id="cEmail" placeholder="john@example.com">
+            <span class="err-msg"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cSubject">Subject</label>
+          <input type="text" id="cSubject" placeholder="How can we help?">
+          <span class="err-msg"></span>
+        </div>
+        <div class="form-group">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" placeholder="Write your message here…"></textarea>
+          <span class="err-msg"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" style="padding-top:0">
+  <div class="container">
+    <div class="cta-box" data-reveal="zoom">
+      <h2>Prefer to explore first?</h2>
+      <p>Create a free account and test every feature — no deposit required to look around.</p>
+      <a href="register.html" class="btn btn-white">Create Free Account <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Crypto — Stackly Crypto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header id="site-header" data-active="trade"></header>
+
+<!-- ================= 1. PAGE HERO ================= -->
+<section class="page-hero">
+  <div class="container">
+    <h1 data-reveal>Trade <span class="grad-text" style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent">crypto</span> in seconds</h1>
+    <p data-reveal data-delay="100">150+ coins and tokens at the best aggregated market rates — with bank-grade security, deep liquidity and lightning-fast execution.</p>
+    <div class="breadcrumb" data-reveal data-delay="200"><a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Trade</span></div>
+  </div>
+</section>
+
+<!-- ================= 2. LIVE TICKER ================= -->
+<section style="padding:20px 0 0">
+  <div class="container">
+    <div class="ticker-wrap" data-reveal="zoom">
+      <div class="ticker" id="ticker">
+        <div class="coin-item"><span class="coin-logo coin-btc"><i class="fa-brands fa-bitcoin"></i></span>
+          <div class="coin-info"><b>BTC</b><small data-price="63245.20">$63,245.20</small><br><span class="up">+2.41%</span></div>
+          <svg class="spark" viewBox="0 0 77 30"></svg></div>
+        <div class="coin-item"><span class="coin-logo coin-eth"><i class="fa-brands fa-ethereum"></i></span>
+          <div class="coin-info"><b>ETH</b><small data-price="3245.80">$3,245.80</small><br><span class="up">+1.86%</span></div>
+          <svg class="spark" viewBox="0 0 77 30"></svg></div>
+        <div class="coin-item"><span class="coin-logo coin-sol"><i class="fa-solid fa-bolt"></i></span>
+          <div class="coin-info"><b>SOL</b><small data-price="142.35">$142.35</small><br><span class="up">+4.32%</span></div>
+          <svg class="spark" viewBox="0 0 77 30"></svg></div>
+        <div class="coin-item"><span class="coin-logo coin-xrp"><i class="fa-solid fa-xmark"></i></span>
+          <div class="coin-info"><b>XRP</b><small data-price="0.58">$0.58</small><br><span class="up">+1.32%</span></div>
+          <svg class="spark" viewBox="0 0 77 30"></svg></div>
+        <div class="coin-item"><span class="coin-logo coin-bnb"><i class="fa-solid fa-coins"></i></span>
+          <div class="coin-info"><b>BNB</b><small data-price="598.21">$598.21</small><br><span class="up">+1.67%</span></div>
+          <svg class="spark" viewBox="0 0 77 30"></svg></div>
+        <div class="coin-item"><span class="coin-logo coin-ada"><i class="fa-solid fa-cube"></i></span>
+          <div class="coin-info"><b>ADA</b><small data-price="0.45">$0.45</small><br><span class="down">-0.84%</span></div>
+          <svg class="spark" viewBox="0 0 77 30"></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. MARKETS TABLE ================= -->
+<section class="services-sec" style="padding-top:70px">
+  <div class="container">
+    <div class="sec-head-center" data-reveal>
+      <span class="sec-tag">Live Markets</span>
+      <h2 class="sec-title">Top markets <span class="grad-text">right now</span></h2>
+      <p class="sec-sub">Real-time prices, sparklines and 24h changes across the most traded assets on Stackly.</p>
+    </div>
+    <div class="panel" data-reveal style="margin-top:48px">
+      <div class="panel-head"><h3>All Markets</h3>
+        <div class="chart-tabs"><button class="active">All</button><button>Top Gainers</button><button>Stablecoins</button></div>
+      </div>
+      <div style="overflow-x:auto">
+      <table class="dash-table">
+        <thead><tr><th>#</th><th>Asset</th><th>Price</th><th>24h</th><th>Market Cap</th><th>Last 7 Days</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><div class="t-coin"><span class="coin-logo coin-btc"><i class="fa-brands fa-bitcoin"></i></span><div><b>Bitcoin</b><small>BTC</small></div></div></td>
+            <td><b data-price="63245.20">$63,245.20</b></td><td><span class="badge badge-green">+2.41%</span></td><td>$1.24T</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+          <tr><td>2</td><td><div class="t-coin"><span class="coin-logo coin-eth"><i class="fa-brands fa-ethereum"></i></span><div><b>Ethereum</b><small>ETH</small></div></div></td>
+            <td><b data-price="3245.80">$3,245.80</b></td><td><span class="badge badge-green">+1.86%</span></td><td>$390.2B</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+          <tr><td>3</td><td><div class="t-coin"><span class="coin-logo coin-bnb"><i class="fa-solid fa-coins"></i></span><div><b>BNB</b><small>BNB</small></div></div></td>
+            <td><b data-price="598.21">$598.21</b></td><td><span class="badge badge-green">+1.67%</span></td><td>$87.4B</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+          <tr><td>4</td><td><div class="t-coin"><span class="coin-logo coin-sol"><i class="fa-solid fa-bolt"></i></span><div><b>Solana</b><small>SOL</small></div></div></td>
+            <td><b data-price="142.35">$142.35</b></td><td><span class="badge badge-green">+4.32%</span></td><td>$66.1B</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+          <tr><td>5</td><td><div class="t-coin"><span class="coin-logo coin-xrp"><i class="fa-solid fa-xmark"></i></span><div><b>XRP</b><small>XRP</small></div></div></td>
+            <td><b data-price="0.58">$0.58</b></td><td><span class="badge badge-green">+1.32%</span></td><td>$32.4B</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+          <tr><td>6</td><td><div class="t-coin"><span class="coin-logo coin-ada"><i class="fa-solid fa-cube"></i></span><div><b>Cardano</b><small>ADA</small></div></div></td>
+            <td><b data-price="0.45">$0.45</b></td><td><span class="badge badge-red">-0.84%</span></td><td>$16.0B</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+          <tr><td>7</td><td><div class="t-coin"><span class="coin-logo coin-doge"><i class="fa-solid fa-dog"></i></span><div><b>Dogecoin</b><small>DOGE</small></div></div></td>
+            <td><b data-price="0.12">$0.12</b></td><td><span class="badge badge-red">-1.24%</span></td><td>$17.8B</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+          <tr><td>8</td><td><div class="t-coin"><span class="coin-logo coin-matic"><i class="fa-solid fa-hexagon-nodes"></i></span><div><b>Polygon</b><small>MATIC</small></div></div></td>
+            <td><b data-price="0.72">$0.72</b></td><td><span class="badge badge-green">+2.08%</span></td><td>$7.2B</td>
+            <td><svg class="spark" viewBox="0 0 77 30" style="width:90px;height:34px"></svg></td>
+            <td><a href="register.html" class="tbl-btn">Trade</a></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. INSTANT CONVERT ================= -->
+<section class="about-sec">
+  <div class="container about-grid">
+    <div data-reveal="left">
+      <span class="sec-tag">Instant Convert</span>
+      <h2 class="sec-title">Buy or sell in <span class="grad-text">one tap</span></h2>
+      <p class="sec-sub">No order books, no confusion. Pick your asset, enter an amount and confirm — crypto lands in your wallet instantly at the best aggregated rate.</p>
+      <div class="panel" style="margin-top:26px">
+        <form class="dash-form" id="convertForm">
+          <div class="form-row">
+            <div class="form-group"><label>You Pay (USD)</label><input type="number" value="1000" min="10"></div>
+            <div class="form-group"><label>You Receive</label>
+              <select><option>Bitcoin (BTC)</option><option>Ethereum (ETH)</option><option>Solana (SOL)</option><option>BNB</option><option>XRP</option></select></div>
+          </div>
+          <div class="convert-preview"><span>Estimated</span><b>≈ 0.0158 BTC</b></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px">Buy Now <i class="fa-solid fa-arrow-right"></i></button>
+          <p style="text-align:center;color:var(--muted);font-size:12.5px;margin-top:12px"><i class="fa-solid fa-lock" style="color:var(--mint)"></i> Secured by 256-bit encryption — free account required</p>
+        </form>
+      </div>
+    </div>
+    <div class="about-visual" data-reveal="right">
+      <img src="images/svc-bots_11zon.webp" alt="Pro trading terminal">
+      <div class="float-chip chip-1"><i class="si-mint" style="border-radius:11px;display:grid;place-items:center"><span class="fa-solid fa-bolt"></span></i> Avg. execution 0.4s</div>
+      <div class="float-chip chip-2"><i class="si-gold" style="border-radius:11px;display:grid;place-items:center"><span class="fa-solid fa-percent"></span></i> Fees from 0.02%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 5. HOW TO TRADE ================= -->
+<section class="how-sec">
+  <div class="container about-grid">
+    <div class="about-visual" data-reveal="left">
+      <img src="images/blog-taxes_11zon.webp" alt="Automated trading bots">
+      <div class="float-chip chip-1"><i class="si-blue" style="border-radius:11px;display:grid;place-items:center"><span class="fa-solid fa-robot"></span></i> Bots trade 24/7 for you</div>
+    </div>
+    <div data-reveal="right">
+      <span class="sec-tag">Simple Process</span>
+      <h2 class="sec-title">Start trading in <span class="grad-text">3 steps</span></h2>
+      <div class="steps-list">
+        <div class="step-item" data-reveal><span class="step-num">01</span>
+          <div><h3>Create your free account</h3><p>Sign up with your email in under a minute — no paperwork, no waiting.</p></div></div>
+        <div class="step-item" data-reveal data-delay="120"><span class="step-num">02</span>
+          <div><h3>Add funds securely</h3><p>Deposit by card, bank transfer or crypto. Your first trade needs as little as $10.</p></div></div>
+        <div class="step-item" data-reveal data-delay="240"><span class="step-num">03</span>
+          <div><h3>Trade 150+ assets</h3><p>Buy, sell and swap instantly — or let automated strategies trade for you.</p></div></div>
+      </div>
+      <a href="register.html" class="btn btn-primary" style="margin-top:26px">Create Free Account <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 6. WHY TRADE WITH STACKLY ================= -->
+<section class="services-sec">
+  <div class="container">
+    <div class="sec-head-center" data-reveal>
+      <span class="sec-tag">The Stackly Edge</span>
+      <h2 class="sec-title">Why traders <span class="grad-text">choose us</span></h2>
+      <p class="sec-sub">Over 2 million buyers and sellers trust Stackly for execution, security and support.</p>
+    </div>
+    <div class="services-grid cols-4">
+      <div class="svc-card has-img" data-reveal><img class="svc-img" src="images/svc-exchange_11zon.webp" alt="Best market rates" loading="lazy">
+        <div class="svc-body"><span class="svc-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></span>
+        <h3>Best Rates</h3><p>We aggregate 12 exchanges to fill every order at the best available price.</p>
+        <a href="register.html" class="svc-link">Start Trading <i class="fa-solid fa-arrow-right"></i></a></div></div>
+      <div class="svc-card has-img" data-reveal data-delay="100"><img class="svc-img" src="images/svc-security_11zon.webp" alt="Bank-grade security" loading="lazy">
+        <div class="svc-body"><span class="svc-icon"><i class="fa-solid fa-shield-halved"></i></span>
+        <h3>Bank-Grade Security</h3><p>95% cold storage, hardware keys and a $300M protection fund behind every trade.</p>
+        <a href="register.html" class="svc-link">Start Trading <i class="fa-solid fa-arrow-right"></i></a></div></div>
+      <div class="svc-card has-img" data-reveal data-delay="200"><img class="svc-img" src="images/svc-alerts_11zon.webp" alt="Smart price alerts" loading="lazy">
+        <div class="svc-body"><span class="svc-icon"><i class="fa-solid fa-bell"></i></span>
+        <h3>Smart Alerts</h3><p>Price, volume and whale-move alerts so you never miss the perfect entry.</p>
+        <a href="register.html" class="svc-link">Start Trading <i class="fa-solid fa-arrow-right"></i></a></div></div>
+      <div class="svc-card has-img" data-reveal data-delay="300"><img class="svc-img" src="images/support_11zon.webp" alt="24/7 expert support" loading="lazy">
+        <div class="svc-body"><span class="svc-icon"><i class="fa-solid fa-headset"></i></span>
+        <h3>24/7 Expert Help</h3><p>Real trading specialists answer in under 3 minutes — any hour, any day.</p>
+        <a href="register.html" class="svc-link">Start Trading <i class="fa-solid fa-arrow-right"></i></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 7. STATS BAND ================= -->
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-card" data-reveal>
+      <div class="stat"><span class="stat-icon si-blue"><i class="fa-solid fa-chart-column"></i></span>
+        <div><b><span data-count="18.5"></span>B+</b><small>Trading Volume</small></div></div>
+      <div class="stat"><span class="stat-icon si-violet"><i class="fa-solid fa-bolt"></i></span>
+        <div><b><span data-count="0.4"></span>s</b><small>Avg. Execution</small></div></div>
+      <div class="stat"><span class="stat-icon si-mint"><i class="fa-solid fa-coins"></i></span>
+        <div><b><span data-count="150"></span>+</b><small>Listed Assets</small></div></div>
+      <div class="stat"><span class="stat-icon si-gold"><i class="fa-solid fa-shield-halved"></i></span>
+        <div><b><span data-count="99.99"></span>%</b><small>Platform Uptime</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 8. TRADING FAQ ================= -->
+<section class="faq-sec">
+  <div class="container">
+    <div class="sec-head-center" data-reveal>
+      <span class="sec-tag">Trading FAQ</span>
+      <h2 class="sec-title">Before you <span class="grad-text">trade</span></h2>
+    </div>
+    <div class="faq-wrap" style="margin-top:48px">
+      <div class="faq-item">
+        <button class="faq-q">What is the minimum amount I can trade? <span class="fq-icon"><i class="fa-solid fa-chevron-down"></i></span></button>
+        <div class="faq-a"><p>You can start with as little as $10. There are no maximum limits for verified accounts — institutional sellers can access our OTC desk for orders above $100K.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How fast do my trades execute? <span class="fq-icon"><i class="fa-solid fa-chevron-down"></i></span></button>
+        <div class="faq-a"><p>Instant conversions settle in under a second. Limit orders on the pro terminal execute as soon as the market hits your price — 99.99% uptime guaranteed.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What are the trading fees? <span class="fq-icon"><i class="fa-solid fa-chevron-down"></i></span></button>
+        <div class="faq-a"><p>Fees start at 0.25% on the free Starter plan and drop to 0.02% for Institutional members. The exact fee is always shown before you confirm — no hidden costs, ever.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I automate my trading? <span class="fq-icon"><i class="fa-solid fa-chevron-down"></i></span></button>
+        <div class="faq-a"><p>Yes — the no-code strategy builder lets you automate buys, sells and DCA schedules, and pro users can connect bots through our REST and WebSocket APIs.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 9. CTA ================= -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-box" data-reveal="zoom">
+      <h2>Ready to place your first trade?</h2>
+      <p>Join 2M+ traders on Stackly. Subscribe for weekly market insights, new coin alerts and exclusive offers.</p>
+      <form class="newsletter" id="newsletterForm" novalidate>
+        <input type="email" placeholder="Enter your email address" aria-label="Email">
+        <button type="submit" class="btn btn-white">Subscribe <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+      <div class="nl-msg" id="nlMsg"></div>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Convert form leads to account creation (trading requires a free account)
+  document.getElementById("convertForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    window.location.href = "register.html";
+  });
+</script>
+</body>
+</html>
