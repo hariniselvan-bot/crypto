@@ -4,21 +4,8 @@
 (function () {
   "use strict";
 
-  /* ---------- Logo SVG (shared) ---------- */
-  const LOGO_SVG = `
-    <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="lgA" x1="0" y1="0" x2="48" y2="48">
-          <stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#a855f7"/>
-        </linearGradient>
-        <linearGradient id="lgB" x1="48" y1="0" x2="0" y2="48">
-          <stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#4f46e5"/>
-        </linearGradient>
-      </defs>
-      <path d="M24 2 42 12.5v23L24 46 6 35.5v-23L24 2Z" fill="url(#lgA)"/>
-      <path d="M15 18.5h13.5a4.7 4.7 0 0 1 0 9.4H19a4.7 4.7 0 0 0 0 9.4H33" stroke="#fff" stroke-width="4.4" stroke-linecap="round" fill="none"/>
-      <path d="M24 2 42 12.5 24 23 6 12.5 24 2Z" fill="url(#lgB)" opacity=".85"/>
-    </svg>`;
+  /* ---------- Logo image (shared) ---------- */
+  const LOGO_IMG = '<img class="logo-mark" src="images/logo.webp" alt="Stackly Crypto logo">';
 
   /* ---------- Header ---------- */
   const NAV = [
@@ -41,7 +28,7 @@
     host.className = "site-header";
     host.innerHTML = `
       <div class="container header-inner">
-        <a href="index.html" class="logo">${LOGO_SVG}
+        <a href="index.html" class="logo">${LOGO_IMG}
           <span class="logo-text"><b>STACKLY</b><span>CRYPTO</span></span>
         </a>
         <nav class="main-nav">${links}</nav>
@@ -63,6 +50,9 @@
       </div>`;
     const ham = document.getElementById("hamburger");
     const menu = document.getElementById("mobileMenu");
+    // Keep the fixed drawer outside the blurred sticky header. A backdrop-filter
+    // on the scrolled header otherwise becomes the drawer's containing block.
+    document.body.appendChild(menu);
     ham.addEventListener("click", () => {
       ham.classList.toggle("open");
       menu.classList.toggle("open");
@@ -84,7 +74,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html" class="logo">${LOGO_SVG}
+            <a href="index.html" class="logo">${LOGO_IMG}
               <span class="logo-text"><b>STACKLY</b><span>CRYPTO</span></span></a>
             <p>The most trusted cryptocurrency platform. Trade, stake and grow your digital assets with bank-grade security and lightning-fast execution.</p>
             <div class="socials">
