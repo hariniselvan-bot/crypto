@@ -34,13 +34,26 @@
 </div>
 
 <script>
-  // "Go Back" returns to the exact previous page & section the visitor came from.
-  // Every page stores its URL in sessionStorage; fall back to history, then home.
+  function readLastPage() {
+    try {
+      const raw = sessionStorage.getItem("stackly_last");
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
   document.getElementById("backBtn").addEventListener("click", function () {
-    var last = null;
-    try { last = sessionStorage.getItem("stackly_last"); } catch (e) {}
-    if (last && last.indexOf("404.html") === -1) {
-      window.location.href = last;
+    var last = readLastPage();
+    var lastUrl = last && last.url ? last.url : null;
+
+    if (lastUrl && lastUrl.indexOf("404.html") === -1) {
+      sessionStorage.removeItem("stackly_resume_scroll");
+      if (last && last.hash) {
+        window.location.assign(lastUrl + last.hash);
+      } else {
+        window.location.assign(lastUrl);
+      }
     } else if (window.history.length > 1 && document.referrer) {
       window.history.back();
     } else {
