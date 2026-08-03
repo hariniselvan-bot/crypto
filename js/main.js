@@ -4,8 +4,21 @@
 (function () {
   "use strict";
 
-  /* ---------- Logo image (shared) ---------- */
-  const LOGO_IMG = '<img class="logo-mark" src="images/logo.webp" alt="Stackly Crypto logo">';
+  /* ---------- Logo SVG (shared) ---------- */
+  const LOGO_SVG = `
+    <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lgA" x1="0" y1="0" x2="48" y2="48">
+          <stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#a855f7"/>
+        </linearGradient>
+        <linearGradient id="lgB" x1="48" y1="0" x2="0" y2="48">
+          <stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#4f46e5"/>
+        </linearGradient>
+      </defs>
+      <path d="M24 2 42 12.5v23L24 46 6 35.5v-23L24 2Z" fill="url(#lgA)"/>
+      <path d="M15 18.5h13.5a4.7 4.7 0 0 1 0 9.4H19a4.7 4.7 0 0 0 0 9.4H33" stroke="#fff" stroke-width="4.4" stroke-linecap="round" fill="none"/>
+      <path d="M24 2 42 12.5 24 23 6 12.5 24 2Z" fill="url(#lgB)" opacity=".85"/>
+    </svg>`;
 
   /* ---------- Header ---------- */
   const NAV = [
@@ -28,7 +41,7 @@
     host.className = "site-header";
     host.innerHTML = `
       <div class="container header-inner">
-        <a href="index.html" class="logo">${LOGO_IMG}
+        <a href="index.html" class="logo">${LOGO_SVG}
           <span class="logo-text"><b>STACKLY</b><span>CRYPTO</span></span>
         </a>
         <nav class="main-nav">${links}</nav>
@@ -50,9 +63,6 @@
       </div>`;
     const ham = document.getElementById("hamburger");
     const menu = document.getElementById("mobileMenu");
-    // Keep the fixed drawer outside the blurred sticky header. A backdrop-filter
-    // on the scrolled header otherwise becomes the drawer's containing block.
-    document.body.appendChild(menu);
     ham.addEventListener("click", () => {
       ham.classList.toggle("open");
       menu.classList.toggle("open");
@@ -74,7 +84,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="index.html" class="logo">${LOGO_IMG}
+            <a href="index.html" class="logo">${LOGO_SVG}
               <span class="logo-text"><b>STACKLY</b><span>CRYPTO</span></span></a>
             <p>The most trusted cryptocurrency platform. Trade, stake and grow your digital assets with bank-grade security and lightning-fast execution.</p>
             <div class="socials">
@@ -101,8 +111,8 @@
           </ul></div>
           <div class="footer-col"><h4>Support</h4><ul>
             <li><a href="404.html"><i class="fa-solid fa-arrow-right"></i>Help Center</a></li>
-            <li><a href="404.html"><i class="fa-solid fa-arrow-right"></i>FAQs</a></li>
-            <li><a href="404.html"><i class="fa-solid fa-arrow-right"></i>Contact Us</a></li>
+            <li><a href="index.html#faq"><i class="fa-solid fa-arrow-right"></i>FAQs</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-arrow-right"></i>Contact Us</a></li>
             <li><a href="404.html"><i class="fa-solid fa-arrow-right"></i>Privacy Policy</a></li>
             <li><a href="404.html"><i class="fa-solid fa-arrow-right"></i>Terms of Use</a></li>
           </ul></div>
@@ -230,25 +240,24 @@
     });
   }
 
-/* ---------- Newsletter ---------- */
-function initNewsletter() {
-  const f = document.getElementById("newsletterForm");
-  if (!f) return;
+  /* ---------- Newsletter ---------- */
+  function initNewsletter() {
+    const f = document.getElementById("newsletterForm");
+    if (!f) return;
+    f.addEventListener("submit", e => {
+      e.preventDefault();
+      const input = f.querySelector("input");
+      const msg = document.getElementById("nlMsg");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
+        msg.textContent = "Please enter a valid email address."; msg.style.color = "#ffd2dc";
+        input.focus(); return;
+      }
+      msg.textContent = "Subscribed successfully! Welcome to Stackly."; msg.style.color = "#5cf2c8";
+      showToast("Newsletter subscription successful!");
+      input.value = "";
+    });
+  }
 
-  f.addEventListener("submit", e => {
-    e.preventDefault();
-
-    const input = f.querySelector("input");
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim())) {
-      showToast("Please enter a valid email address.");
-      input.focus();
-      return;
-    }
-
-    window.location.href = "404.html";
-  });
-}
   /* ---------- Back to top ---------- */
   function initBackTop() {
     const b = document.createElement("button");
@@ -505,8 +514,44 @@ function initNewsletter() {
   /* ---------- Remember last real page (for 404 "Go Back") ---------- */
   (function trackLastPage() {
     const file = location.pathname.split("/").pop() || "index.html";
-    if (file !== "404.html") sessionStorage.setItem("stackly_last", location.href);
+    if (file === "404.html") return;
+    // Store as {url, hash} so the 404 page can return to the exact section
+    sessionStorage.setItem("stackly_last", JSON.stringify({
+      url: location.href.split("#")[0],
+      hash: location.hash || ""
+    }));
   })();
+
+  // Before leaving for the 404 page, remember the exact section the visitor
+  // was in — footer links return to the footer, section links to that section.
+  document.addEventListener("click", function (e) {
+    const trigger = e.target.closest('a[href*="404.html"], [onclick*="404.html"]');
+    if (!trigger) return;
+    let hash = "";
+    const footerHit = trigger.closest("footer");
+    if (footerHit) {
+      hash = "#site-footer";
+    } else {
+      const sec = trigger.closest("section[id], [id]");
+      if (sec && sec.id) hash = "#" + sec.id;
+    }
+    sessionStorage.setItem("stackly_last", JSON.stringify({
+      url: location.href.split("#")[0],
+      hash: hash
+    }));
+  }, true);
+
+  // Landing back with a section hash: jump straight to it (no scroll from the
+  // hero), re-pinning once images/layout settle so the position is exact.
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) {
+      const jump = () => target.scrollIntoView({ behavior: "instant", block: "start" });
+      jump();
+      setTimeout(jump, 120);
+      setTimeout(jump, 450);
+    }
+  }
 
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", () => {
