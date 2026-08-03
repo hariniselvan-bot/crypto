@@ -301,6 +301,23 @@
   function clearErrs(form) {
     form.querySelectorAll(".form-group.error").forEach(g => g.classList.remove("error"));
   }
+  function getStoredSession() {
+    try { return JSON.parse(localStorage.getItem("stackly_session") || "null"); }
+    catch (e) { return null; }
+  }
+  function saveStoredSession(session) {
+    localStorage.setItem("stackly_session", JSON.stringify(session));
+  }
+  function clearStoredSession() {
+    localStorage.removeItem("stackly_session");
+  }
+  function renderDashboardProfile(session) {
+    if (!session || !session.email) return;
+    const avatar = document.getElementById("dashUserAvatar");
+    const emailEl = document.getElementById("dashUserEmail");
+    if (avatar) avatar.textContent = session.email.charAt(0).toUpperCase();
+    if (emailEl) emailEl.textContent = session.email;
+  }
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   /* ---------- Login ---------- */
@@ -323,7 +340,7 @@
       if (!EMAIL_RE.test(email)) { setErr("loginEmail", "Enter a valid email address."); ok = false; }
       if (pwd.length < 6) { setErr("loginPwd", "Password must be at least 6 characters."); ok = false; }
       if (!ok) return;
-      localStorage.setItem("stackly_session", JSON.stringify({ email, role, ts: Date.now() }));
+      saveStoredSession({ email, role, ts: Date.now() });
       const m = document.getElementById("authMsg");
       m.className = "auth-msg success";
       m.textContent = `Welcome back! Logging in as ${role === "admin" ? "Admin" : "User"}…`;
@@ -384,11 +401,12 @@
   function initDashboard() {
     const body = document.querySelector(".dash-body");
     if (!body) return;
-    const session = JSON.parse(localStorage.getItem("stackly_session") || "null");
+    const session = getStoredSession();
     const need = body.dataset.role; // "user" | "admin"
     if (!session) { window.location.href = "login.html"; return; }
     const who = document.getElementById("dashUser");
     if (who) who.textContent = session.email.split("@")[0];
+    renderDashboardProfile(session);
 
     // Sidebar (mobile)
     const sb = document.querySelector(".sidebar");
@@ -400,7 +418,7 @@
     // Logout
     document.querySelectorAll("[data-logout]").forEach(a => a.addEventListener("click", e => {
       e.preventDefault();
-      localStorage.removeItem("stackly_session");
+      clearStoredSession();
       window.location.href = "login.html";
     }));
 
